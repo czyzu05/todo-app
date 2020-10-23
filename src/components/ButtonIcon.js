@@ -5,15 +5,19 @@ const StyledButton = styled.button`
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  z-index: 9000;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 `;
 
 const PlusIcon = styled.i`
   font-size: 30px;
 `;
 
-const ButtonIcon = () => {
+const ButtonIcon = ({ taskFormVisibleToggle }) => {
   return (
-    <StyledButton>
+    <StyledButton onClick={taskFormVisibleToggle}>
       <PlusIcon className="fas fa-plus"></PlusIcon>
     </StyledButton>
   );

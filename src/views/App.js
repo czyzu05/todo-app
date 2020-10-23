@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   background-color: darkgreen;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
 const App = () => {
@@ -41,6 +42,11 @@ const App = () => {
       done: true,
     },
   ]);
+  const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
+
+  const handleTaskFormVisibleToggle = () => {
+    setIsAddTaskFormVisible(!isAddTaskFormVisible);
+  };
 
   const changeTaskStatus = id => {
     const tasksList = [...tasks];
@@ -54,10 +60,11 @@ const App = () => {
       <Wrapper>
         <Header />
         <TasksList tasks={tasks} changeTaskStatus={changeTaskStatus} />
-        <ButtonIcon />
         <FilterBar />
+        <ButtonIcon taskFormVisibleToggle={handleTaskFormVisibleToggle} />
       </Wrapper>
-      <AddTaskForm />
+
+      <AddTaskForm isVisible={isAddTaskFormVisible} />
     </>
   );
 };
