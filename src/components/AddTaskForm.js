@@ -31,17 +31,44 @@ const SelectPriority = styled.select`
   margin: 20px;
 `;
 
-const AddTaskForm = ({ isVisible }) => {
+const AddTaskForm = ({
+  isVisible,
+  setInputText,
+  inputText,
+  tasks,
+  setTasks,
+}) => {
+  const handleInputText = e => {
+    setInputText(e.target.value);
+  };
+
+  const handleSubmitForm = e => {
+    e.preventDefault();
+    const newTask = {
+      title: inputText,
+      done: false,
+      id: 9,
+    };
+    setTasks([...tasks, newTask]);
+    setInputText("");
+  };
+
   return (
     <FormWrapper isVisible={isVisible}>
-      <Header>Add new Note</Header>
-      <Input placeholder="title" />
-      <SelectPriority name="priority">
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </SelectPriority>
-      <Button>Add Note</Button>
+      <form onSubmit={handleSubmitForm}>
+        <Header>Add new Note</Header>
+        <Input
+          placeholder="title"
+          onChange={handleInputText}
+          value={inputText}
+        />
+        <SelectPriority name="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </SelectPriority>
+        <Button>Add Note</Button>
+      </form>
     </FormWrapper>
   );
 };

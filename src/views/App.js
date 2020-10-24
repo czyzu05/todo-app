@@ -43,6 +43,8 @@ const App = () => {
     },
   ]);
   const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
+  const [inputText, setInputText] = useState("");
+  const [priority, setPriority] = useState("Low");
 
   const handleTaskFormVisibleToggle = () => {
     setIsAddTaskFormVisible(!isAddTaskFormVisible);
@@ -64,7 +66,15 @@ const App = () => {
         <ButtonIcon taskFormVisibleToggle={handleTaskFormVisibleToggle} />
       </Wrapper>
 
-      <AddTaskForm isVisible={isAddTaskFormVisible} />
+      <AddTaskForm
+        isVisible={isAddTaskFormVisible}
+        setInputText={setInputText}
+        inputText={inputText}
+        tasks={tasks}
+        setTasks={setTasks}
+        priority={priority}
+        setPriority={setPriority}
+      />
     </>
   );
 };

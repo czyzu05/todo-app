@@ -7,8 +7,8 @@ const StyledButton = styled.button`
   border-radius: 50%;
   z-index: 9000;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 50px;
+  right: 15px;
 `;
 
 const PlusIcon = styled.i`
