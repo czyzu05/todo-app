@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import TaskItem from "components/TaskItem";
 
-const TasksWrapper = styled.div`
-  background-color: darkslategrey;
-`;
+const TasksWrapper = styled.div``;
 
 const TasksList = ({ tasks, changeTaskStatus, numberRows }) => {
   const tasksList = tasks.map(task => (

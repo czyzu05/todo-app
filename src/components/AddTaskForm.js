@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Input from "components/Input";
 import Button from "components/Button";
 
-const FormWrapper = styled.div`
+const FormWrapper = styled.form`
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -19,20 +19,33 @@ const FormWrapper = styled.div`
 `;
 
 const Header = styled.h1`
-  font-size: 30px;
+  font-size: 35px;
   text-align: center;
-  padding: 20px;
+  padding: 25px;
 `;
 
 const SelectPriority = styled.select`
   border: 2px solid #494430;
   cursor: pointer;
-  width: 10rem;
+  width: 200px;
+  font-size: 20px;
   margin: 20px;
+`;
+
+const AddButton = styled(Button)`
+  font-size: 20px;
+  padding: 10px;
+  width: 150px;
+
+  :hover {
+    border: 2px solid black;
+    cursor: pointer;
+  }
 `;
 
 const AddTaskForm = ({
   isVisible,
+  setIsAddTaskFormVisible,
   setInputText,
   inputText,
   tasks,
@@ -54,6 +67,7 @@ const AddTaskForm = ({
     setTasks([...tasks, newTask]);
     setInputText("");
     setPriority("Low");
+    setIsAddTaskFormVisible(false);
   };
 
   const handleSelectPriority = e => {
@@ -61,25 +75,19 @@ const AddTaskForm = ({
   };
 
   return (
-    <FormWrapper isVisible={isVisible}>
-      <form onSubmit={handleSubmitForm}>
-        <Header>Add new Note</Header>
-        <Input
-          placeholder="title"
-          onChange={handleInputText}
-          value={inputText}
-        />
-        <SelectPriority
-          name="priority"
-          value={priority}
-          onChange={handleSelectPriority}
-        >
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-        </SelectPriority>
-        <Button>Add Note</Button>
-      </form>
+    <FormWrapper isVisible={isVisible} onSubmit={handleSubmitForm}>
+      <Header>Add new Note</Header>
+      <Input placeholder="Title" onChange={handleInputText} value={inputText} />
+      <SelectPriority
+        name="priority"
+        value={priority}
+        onChange={handleSelectPriority}
+      >
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </SelectPriority>
+      <AddButton>Add Note</AddButton>
     </FormWrapper>
   );
 };

@@ -9,7 +9,7 @@ import AddTaskForm from "components/AddTaskForm";
 
 const Wrapper = styled.div`
   min-height: 100vh;
-  background-color: darkgreen;
+  padding: 6px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -100,6 +100,7 @@ const App = () => {
 
       <AddTaskForm
         isVisible={isAddTaskFormVisible}
+        setIsAddTaskFormVisible={setIsAddTaskFormVisible}
         setInputText={setInputText}
         inputText={inputText}
         tasks={tasks}

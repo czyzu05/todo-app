@@ -5,16 +5,19 @@ import Paragraph from "components/Paragraph";
 const FilterWrapper = styled.div`
   flex-basis: 5vh;
   padding: 10px 0;
-  background-color: darkcyan;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  label {
+    font-size: 17px;
+  }
 `;
 
 const Arrow = styled.i`
   flex-basis: 20px;
   font-size: 25px;
-  margin: 0 20px 0 0;
+  margin: 0 8px 0 8px;
 `;
 
 const SelectRows = styled.select`
@@ -35,7 +38,7 @@ const FilterBar = ({ setNumberRows, numberRows, numberTasks }) => {
 
   return (
     <FilterWrapper>
-      <label for="rowsSelect">Rows per Page:</label>
+      <label htmlFor="rowsSelect">Rows per Page:</label>
       <SelectRows
         name="rows"
         id="rowsSelect"

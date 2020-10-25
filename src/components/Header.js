@@ -4,7 +4,7 @@ import Paragraph from "components/Paragraph";
 
 const HeaderWrapper = styled.div`
   background-color: #494430;
-  flex-basis: 10vh;
+  flex-basis: 9vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,8 +12,10 @@ const HeaderWrapper = styled.div`
 
 const HeaderParagraph = styled(Paragraph)`
   color: white;
-  flex-basis: 25.1%;
+  flex-basis: 30%;
   flex-grow: 1;
+  text-align: center;
+  font-size: 17px;
 `;
 
 const Header = () => {
