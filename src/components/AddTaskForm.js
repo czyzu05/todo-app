@@ -37,6 +37,8 @@ const AddTaskForm = ({
   inputText,
   tasks,
   setTasks,
+  setPriority,
+  priority,
 }) => {
   const handleInputText = e => {
     setInputText(e.target.value);
@@ -47,10 +49,15 @@ const AddTaskForm = ({
     const newTask = {
       title: inputText,
       done: false,
-      id: 9,
+      priority: priority,
     };
     setTasks([...tasks, newTask]);
     setInputText("");
+    setPriority("Low");
+  };
+
+  const handleSelectPriority = e => {
+    setPriority(e.target.value);
   };
 
   return (
@@ -62,10 +69,14 @@ const AddTaskForm = ({
           onChange={handleInputText}
           value={inputText}
         />
-        <SelectPriority name="priority">
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
+        <SelectPriority
+          name="priority"
+          value={priority}
+          onChange={handleSelectPriority}
+        >
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
         </SelectPriority>
         <Button>Add Note</Button>
       </form>

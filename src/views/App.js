@@ -41,10 +41,23 @@ const App = () => {
       priority: "Low",
       done: true,
     },
+    {
+      id: 4,
+      title: "Task5",
+      priority: "Low",
+      done: true,
+    },
+    {
+      id: 5,
+      title: "Task6",
+      priority: "Low",
+      done: true,
+    },
   ]);
   const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
   const [inputText, setInputText] = useState("");
   const [priority, setPriority] = useState("Low");
+  const [numberRows, setNumberRows] = useState(5);
 
   const handleTaskFormVisibleToggle = () => {
     setIsAddTaskFormVisible(!isAddTaskFormVisible);
@@ -61,8 +74,16 @@ const App = () => {
       <GlobalStyles />
       <Wrapper>
         <Header />
-        <TasksList tasks={tasks} changeTaskStatus={changeTaskStatus} />
-        <FilterBar />
+        <TasksList
+          tasks={tasks}
+          changeTaskStatus={changeTaskStatus}
+          numberRows={numberRows}
+        />
+        <FilterBar
+          numberRows={numberRows}
+          setNumberRows={setNumberRows}
+          numberTasks={tasks.length}
+        />
         <ButtonIcon taskFormVisibleToggle={handleTaskFormVisibleToggle} />
       </Wrapper>
 
