@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "components/Header";
 import TasksList from "components/TasksList";
@@ -58,6 +58,17 @@ const App = () => {
   const [inputText, setInputText] = useState("");
   const [priority, setPriority] = useState("Low");
   const [numberRows, setNumberRows] = useState(5);
+
+  useEffect(() => {
+    const data = localStorage.getItem("tasks");
+    if (data) {
+      setTasks(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  });
 
   const handleTaskFormVisibleToggle = () => {
     setIsAddTaskFormVisible(!isAddTaskFormVisible);
