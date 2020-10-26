@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Tippy from "@tippyjs/react";
+import PropTypes from "prop-types";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 import "tippy.js/animations/scale.css";
@@ -20,12 +21,23 @@ const TaskInfo = styled(Paragraph)`
   flex-grow: 1;
   text-align: center;
   font-size: 13px;
+
+  @media (min-width: 1200px) {
+    font-size: 18px;
+  }
 `;
 
 const InputWrapper = styled.div`
   flex-basis: 25.1%;
   flex-grow: 1;
   text-align: center;
+
+  @media (min-width: 1200px) {
+    input {
+      width: 20px;
+      height: 20px;
+    }
+  }
 `;
 
 const TrashTooltip = styled.i`
@@ -72,6 +84,16 @@ const TaskItem = ({
       </InputWrapper>
     </TaskItemWrapper>
   );
+};
+
+TaskItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  priority: PropTypes.string.isRequired,
+  done: PropTypes.bool.isRequired,
+  changeTaskStatus: PropTypes.func,
+  handleDeleteTask: PropTypes.func,
+  task: PropTypes.object.isRequired,
 };
 
 export default TaskItem;

@@ -127,9 +127,10 @@ const App = () => {
     },
   ]);
   const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
-  const [inputText, setInputText] = useState("");
   const [priority, setPriority] = useState("Low");
   const [numberRows, setNumberRows] = useState(5);
+  const [startNumberRows, setStartNumberRows] = useState(0);
+  const [endNumberRows, setEndNumberRows] = useState(5);
 
   useEffect(() => {
     const data = localStorage.getItem("tasks");
@@ -168,11 +169,17 @@ const App = () => {
           changeTaskStatus={changeTaskStatus}
           numberRows={numberRows}
           handleDeleteTask={handleDeleteTask}
+          startNumberRows={startNumberRows}
+          endNumberRows={endNumberRows}
         />
         <FilterBar
           numberRows={numberRows}
           setNumberRows={setNumberRows}
           numberTasks={tasks.length}
+          startNumberRows={startNumberRows}
+          endNumberRows={endNumberRows}
+          setEndNumberRows={setEndNumberRows}
+          setStartNumberRows={setStartNumberRows}
         />
         <ButtonIcon taskFormVisibleToggle={handleTaskFormVisibleToggle} />
       </Wrapper>
@@ -180,8 +187,6 @@ const App = () => {
       <AddTaskForm
         isVisible={isAddTaskFormVisible}
         setIsAddTaskFormVisible={setIsAddTaskFormVisible}
-        setInputText={setInputText}
-        inputText={inputText}
         tasks={tasks}
         setTasks={setTasks}
         priority={priority}

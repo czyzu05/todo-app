@@ -1,7 +1,7 @@
 ## TODO App
 
 Application that show your to-do list.<br/>
-Used technologies: React, JavaScript, HTML, CSS, Tippy.js, styled-components<br/>
+Used technologies: React, JavaScript, HTML, Tippy.js, styled-components<br/>
 
 ### `Installation`
 

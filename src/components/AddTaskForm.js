@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import Input from "components/Input";
 import Button from "components/Button";
 
@@ -50,29 +51,31 @@ const AddButton = styled(Button)`
 const AddTaskForm = ({
   isVisible,
   setIsAddTaskFormVisible,
-  setInputText,
-  inputText,
   tasks,
   setTasks,
   setPriority,
   priority,
 }) => {
+  const [inputText, setInputText] = useState("");
+
   const handleInputText = e => {
     setInputText(e.target.value);
   };
 
   const handleSubmitForm = e => {
     e.preventDefault();
-    const newTask = {
-      title: inputText,
-      done: false,
-      priority: priority,
-      id: Math.random() * 100,
-    };
-    setTasks([...tasks, newTask]);
-    setInputText("");
-    setPriority("Low");
-    setIsAddTaskFormVisible(false);
+    if (inputText.length > 1) {
+      const newTask = {
+        title: inputText,
+        done: false,
+        priority: priority,
+        id: Math.random() * 100,
+      };
+      setTasks([...tasks, newTask]);
+      setInputText("");
+      setPriority("Low");
+      setIsAddTaskFormVisible(false);
+    }
   };
 
   const handleSelectPriority = e => {
@@ -95,6 +98,12 @@ const AddTaskForm = ({
       <AddButton>Add Note</AddButton>
     </FormWrapper>
   );
+};
+
+AddTaskForm.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  tasks: PropTypes.arrayOf(PropTypes.object).isRequired,
+  priority: PropTypes.string.isRequired,
 };
 
 export default AddTaskForm;

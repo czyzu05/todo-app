@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import Paragraph from "components/Paragraph";
 
 const FilterWrapper = styled.div`
@@ -15,9 +16,8 @@ const FilterWrapper = styled.div`
 `;
 
 const Arrow = styled.i`
-  flex-basis: 20px;
-  font-size: 25px;
-  margin: 0 8px 0 8px;
+  font-size: 20px;
+  margin: 0 5px 0 5px;
 `;
 
 const SelectRows = styled.select`
@@ -31,14 +31,56 @@ const SelectRows = styled.select`
   margin: 0 10px;
 `;
 
-const FilterBar = ({ setNumberRows, numberRows, numberTasks }) => {
+const ChangePageButton = styled.button`
+  width: 30px;
+  height: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0 8px;
+  background-color: transparent;
+  border: none;
+
+  :hover {
+    border: 1px solid black;
+  }
+`;
+
+const FilterBar = ({
+  setNumberRows,
+  numberRows,
+  numberTasks,
+  endNumberRows,
+  startNumberRows,
+  setEndNumberRows,
+  setStartNumberRows,
+}) => {
   const handleNumberRows = e => {
-    console.log(e.target.value);
-    setNumberRows(e.target.value);
+    setEndNumberRows(parseInt(e.target.value, 10) + startNumberRows);
+    setNumberRows(parseInt(e.target.value, 10));
   };
 
-  const displayNextPage = () => {
-    console.log("Hej");
+  const displayNextPage = direction => {
+    switch (direction) {
+      case "right":
+        if (endNumberRows >= numberTasks) {
+          setEndNumberRows(numberTasks + 1);
+        } else {
+          setEndNumberRows(endNumberRows + numberRows);
+          setStartNumberRows(startNumberRows + numberRows);
+        }
+        break;
+      case "left":
+        if (startNumberRows - numberRows <= 0) {
+          setStartNumberRows(0);
+          setEndNumberRows(numberRows);
+        } else {
+          setEndNumberRows(endNumberRows - numberRows);
+          setStartNumberRows(startNumberRows - numberRows);
+        }
+        break;
+      default:
+        return null;
+    }
   };
 
   return (
@@ -55,14 +97,26 @@ const FilterBar = ({ setNumberRows, numberRows, numberTasks }) => {
         <option value={15}>{15}</option>
       </SelectRows>
       <Paragraph>
-        1-{numberRows} of {numberTasks}
+        {startNumberRows + 1}-{endNumberRows} of {numberTasks}
       </Paragraph>
-      <Arrow className="fas fa-chevron-left" />
-      <button onClick={displayNextPage}>
+      <ChangePageButton onClick={() => displayNextPage("left")}>
+        <Arrow className="fas fa-chevron-left" />
+      </ChangePageButton>
+      <ChangePageButton onClick={() => displayNextPage("right")}>
         <Arrow className="fas fa-chevron-right" />
-      </button>
+      </ChangePageButton>
     </FilterWrapper>
   );
+};
+
+FilterBar.propTypes = {
+  numberRows: PropTypes.number.isRequired,
+  numberTasks: PropTypes.number,
+  endNumberRows: PropTypes.number.isRequired,
+  startNumberRows: PropTypes.number.isRequired,
+};
+FilterBar.defaultProps = {
+  numberTasks: 0,
 };
 
 export default FilterBar;

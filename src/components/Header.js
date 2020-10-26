@@ -16,6 +16,9 @@ const HeaderParagraph = styled(Paragraph)`
   flex-grow: 1;
   text-align: center;
   font-size: 17px;
+  @media (min-width: 1200px) {
+    font-size: 24px;
+  }
 `;
 
 const Header = () => {
