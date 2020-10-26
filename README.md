@@ -9,8 +9,8 @@ Used technologies: React, JavaScript, HTML, CSS, Tippy.js, styled-components<br/
 
 - In your terminal, type git clone URL<br/>
 
-replace URL with the url you copied<br/>
-hit enter<br/>
+  - replace URL with the url you copied<br/>
+  - hit enter<br/>
 
 - This will copy all the files from this repo down to your computer<br/>
 
