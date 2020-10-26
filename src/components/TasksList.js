@@ -4,7 +4,12 @@ import TaskItem from "components/TaskItem";
 
 const TasksWrapper = styled.div``;
 
-const TasksList = ({ tasks, changeTaskStatus, numberRows }) => {
+const TasksList = ({
+  tasks,
+  changeTaskStatus,
+  numberRows,
+  handleDeleteTask,
+}) => {
   const tasksList = tasks.map(task => (
     <TaskItem
       key={task.id}
@@ -13,6 +18,8 @@ const TasksList = ({ tasks, changeTaskStatus, numberRows }) => {
       priority={task.priority}
       done={task.done}
       changeTaskStatus={changeTaskStatus}
+      handleDeleteTask={handleDeleteTask}
+      task={task}
     />
   ));
 

@@ -65,7 +65,6 @@ const App = () => {
       setTasks(JSON.parse(data));
     }
   }, []);
-
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   });
@@ -75,8 +74,15 @@ const App = () => {
   };
 
   const changeTaskStatus = id => {
-    const tasksList = [...tasks];
-    tasksList[id].done = !tasks[id].done;
+    let tasksList = [...tasks];
+    const index = tasksList.findIndex(task => task.id === id);
+    tasksList[index].done = !tasksList[index].done;
+    setTasks(tasksList);
+  };
+
+  const handleDeleteTask = id => {
+    let tasksList = [...tasks];
+    tasksList = tasksList.filter(task => task.id !== id);
     setTasks(tasksList);
   };
 
@@ -89,6 +95,7 @@ const App = () => {
           tasks={tasks}
           changeTaskStatus={changeTaskStatus}
           numberRows={numberRows}
+          handleDeleteTask={handleDeleteTask}
         />
         <FilterBar
           numberRows={numberRows}

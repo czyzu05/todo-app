@@ -63,6 +63,7 @@ const AddTaskForm = ({
       title: inputText,
       done: false,
       priority: priority,
+      id: Math.random() * 100,
     };
     setTasks([...tasks, newTask]);
     setInputText("");
