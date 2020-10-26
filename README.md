@@ -3,6 +3,10 @@
 Application that show your to-do list.<br/>
 Used technologies: React, JavaScript, HTML, Tippy.js, styled-components<br/>
 
+### `Live`
+
+[Click](https://czyzu05.github.io/todo-app/)
+
 ### `Installation`
 
 - Clone the repo in your terminal or download button at the top right and copyin the url<br/>
