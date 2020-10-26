@@ -53,6 +53,78 @@ const App = () => {
       priority: "Low",
       done: true,
     },
+    {
+      id: 6,
+      title: "Task1",
+      priority: "Medium",
+      done: false,
+    },
+    {
+      id: 7,
+      title: "Task2",
+      priority: "Medium",
+      done: false,
+    },
+    {
+      id: 8,
+      title: "Task3",
+      priority: "High",
+      done: false,
+    },
+    {
+      id: 9,
+      title: "Task4",
+      priority: "Low",
+      done: true,
+    },
+    {
+      id: 10,
+      title: "Task5",
+      priority: "Low",
+      done: true,
+    },
+    {
+      id: 11,
+      title: "Task6",
+      priority: "Low",
+      done: true,
+    },
+    {
+      id: 12,
+      title: "Task1",
+      priority: "Medium",
+      done: false,
+    },
+    {
+      id: 13,
+      title: "Task2",
+      priority: "Medium",
+      done: false,
+    },
+    {
+      id: 14,
+      title: "Task3",
+      priority: "High",
+      done: false,
+    },
+    {
+      id: 15,
+      title: "Task4",
+      priority: "Low",
+      done: true,
+    },
+    {
+      id: 16,
+      title: "Task5",
+      priority: "Low",
+      done: true,
+    },
+    {
+      id: 17,
+      title: "Task6",
+      priority: "Low",
+      done: true,
+    },
   ]);
   const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
   const [inputText, setInputText] = useState("");

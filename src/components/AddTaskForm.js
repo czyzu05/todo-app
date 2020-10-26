@@ -16,6 +16,10 @@ const FormWrapper = styled.form`
   align-items: center;
   transform: translate(${({ isVisible }) => (isVisible ? "0" : "100%")});
   transition: transform 0.5s ease;
+
+  @media (min-width: 1200px) {
+    width: 30vw;
+  }
 `;
 
 const Header = styled.h1`

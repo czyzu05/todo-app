@@ -33,7 +33,12 @@ const SelectRows = styled.select`
 
 const FilterBar = ({ setNumberRows, numberRows, numberTasks }) => {
   const handleNumberRows = e => {
+    console.log(e.target.value);
     setNumberRows(e.target.value);
+  };
+
+  const displayNextPage = () => {
+    console.log("Hej");
   };
 
   return (
@@ -45,15 +50,17 @@ const FilterBar = ({ setNumberRows, numberRows, numberTasks }) => {
         value={numberRows}
         onChange={handleNumberRows}
       >
-        <option value={5}>5</option>
-        <option value={10}>10</option>
-        <option value={15}>15</option>
+        <option value={5}>{5}</option>
+        <option value={10}>{10}</option>
+        <option value={15}>{15}</option>
       </SelectRows>
       <Paragraph>
         1-{numberRows} of {numberTasks}
       </Paragraph>
       <Arrow className="fas fa-chevron-left" />
-      <Arrow className="fas fa-chevron-right" />
+      <button onClick={displayNextPage}>
+        <Arrow className="fas fa-chevron-right" />
+      </button>
     </FilterWrapper>
   );
 };
