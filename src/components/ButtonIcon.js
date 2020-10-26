@@ -6,10 +6,19 @@ const StyledButton = styled.button`
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  border: 2px solid black;
   z-index: 9000;
   position: fixed;
   bottom: 35px;
   right: 25px;
+
+  :hover {
+    border: 2px solid #494430;
+    cursor: pointer;
+  }
+  :focus {
+    outline: none;
+  }
 `;
 
 const PlusIcon = styled.i`
@@ -23,7 +32,6 @@ const ButtonIcon = ({ taskFormVisibleToggle }) => {
     </StyledButton>
   );
 };
-
 ButtonIcon.propTypes = {
   taskFormVisibleToggle: PropTypes.func,
 };

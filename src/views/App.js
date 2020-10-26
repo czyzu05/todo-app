@@ -6,6 +6,7 @@ import FilterBar from "components/FilterBar";
 import GlobalStyles from "theme/GlobalStyles";
 import ButtonIcon from "components/ButtonIcon";
 import AddTaskForm from "components/AddTaskForm";
+import Paragraph from "components/Paragraph";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -15,117 +16,14 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
+const Text = styled(Paragraph)`
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+`;
+
 const App = () => {
-  const [tasks, setTasks] = useState([
-    {
-      id: 0,
-      title: "Task1",
-      priority: "Medium",
-      done: false,
-    },
-    {
-      id: 1,
-      title: "Task2",
-      priority: "Medium",
-      done: false,
-    },
-    {
-      id: 2,
-      title: "Task3",
-      priority: "High",
-      done: false,
-    },
-    {
-      id: 3,
-      title: "Task4",
-      priority: "Low",
-      done: true,
-    },
-    {
-      id: 4,
-      title: "Task5",
-      priority: "Low",
-      done: true,
-    },
-    {
-      id: 5,
-      title: "Task6",
-      priority: "Low",
-      done: true,
-    },
-    {
-      id: 6,
-      title: "Task1",
-      priority: "Medium",
-      done: false,
-    },
-    {
-      id: 7,
-      title: "Task2",
-      priority: "Medium",
-      done: false,
-    },
-    {
-      id: 8,
-      title: "Task3",
-      priority: "High",
-      done: false,
-    },
-    {
-      id: 9,
-      title: "Task4",
-      priority: "Low",
-      done: true,
-    },
-    {
-      id: 10,
-      title: "Task5",
-      priority: "Low",
-      done: true,
-    },
-    {
-      id: 11,
-      title: "Task6",
-      priority: "Low",
-      done: true,
-    },
-    {
-      id: 12,
-      title: "Task1",
-      priority: "Medium",
-      done: false,
-    },
-    {
-      id: 13,
-      title: "Task2",
-      priority: "Medium",
-      done: false,
-    },
-    {
-      id: 14,
-      title: "Task3",
-      priority: "High",
-      done: false,
-    },
-    {
-      id: 15,
-      title: "Task4",
-      priority: "Low",
-      done: true,
-    },
-    {
-      id: 16,
-      title: "Task5",
-      priority: "Low",
-      done: true,
-    },
-    {
-      id: 17,
-      title: "Task6",
-      priority: "Low",
-      done: true,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
   const [isAddTaskFormVisible, setIsAddTaskFormVisible] = useState(false);
   const [priority, setPriority] = useState("Low");
   const [numberRows, setNumberRows] = useState(5);
@@ -164,23 +62,31 @@ const App = () => {
       <GlobalStyles />
       <Wrapper>
         <Header />
-        <TasksList
-          tasks={tasks}
-          changeTaskStatus={changeTaskStatus}
-          numberRows={numberRows}
-          handleDeleteTask={handleDeleteTask}
-          startNumberRows={startNumberRows}
-          endNumberRows={endNumberRows}
-        />
-        <FilterBar
-          numberRows={numberRows}
-          setNumberRows={setNumberRows}
-          numberTasks={tasks.length}
-          startNumberRows={startNumberRows}
-          endNumberRows={endNumberRows}
-          setEndNumberRows={setEndNumberRows}
-          setStartNumberRows={setStartNumberRows}
-        />
+        {tasks.length === 0 ? (
+          <Text>Add new task by clicking button at the bottom</Text>
+        ) : (
+          <>
+            {" "}
+            <TasksList
+              tasks={tasks}
+              changeTaskStatus={changeTaskStatus}
+              numberRows={numberRows}
+              handleDeleteTask={handleDeleteTask}
+              startNumberRows={startNumberRows}
+              endNumberRows={endNumberRows}
+            />
+            <FilterBar
+              numberRows={numberRows}
+              setNumberRows={setNumberRows}
+              numberTasks={tasks.length}
+              startNumberRows={startNumberRows}
+              endNumberRows={endNumberRows}
+              setEndNumberRows={setEndNumberRows}
+              setStartNumberRows={setStartNumberRows}
+            />
+          </>
+        )}
+
         <ButtonIcon taskFormVisibleToggle={handleTaskFormVisibleToggle} />
       </Wrapper>
 

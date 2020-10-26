@@ -84,7 +84,7 @@ const AddTaskForm = ({
 
   return (
     <FormWrapper isVisible={isVisible} onSubmit={handleSubmitForm}>
-      <Header>Add new Note</Header>
+      <Header>Add new Task</Header>
       <Input placeholder="Title" onChange={handleInputText} value={inputText} />
       <SelectPriority
         name="priority"

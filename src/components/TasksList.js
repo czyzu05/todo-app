@@ -42,6 +42,8 @@ TasksList.propTypes = {
   changeTaskStatus: PropTypes.func,
   numberRows: PropTypes.number,
   handleDeleteTask: PropTypes.func,
+  endNumberRows: PropTypes.number.isRequired,
+  startNumberRows: PropTypes.number.isRequired,
 };
 
 export default TasksList;
